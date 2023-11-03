@@ -1,0 +1,62 @@
+---
+
+---
+
+
+<div class="search-from relative overflow-hidden ">
+    <input class="round-8 pl-12" type="search" name="search" id="search" placeholder="search any movies...">
+    <label class="absolute top-50  translate-y--50 left-0 fs-18 p-4" for="search"><i class="bi bi-search"></i></label>
+</div>
+<style lang="scss">
+    .search-from{
+        width: 100%;
+        height: 48px;
+        max-width: 300px;
+        transition: var(--ts);
+        
+        @media(max-width:991px){
+            position: absolute;
+            opacity: 0;
+            max-width: 0;
+            
+            display: none;
+        }
+        &.active{
+            max-width: calc(100% - 120px);
+            opacity: 1;
+            display: block;
+        }
+        input{
+            width: 100%;
+            height: 100%;
+            background-color: var(--banner-background);
+            border: 0;
+            outline: 0;
+            color:var(--white);
+            transition: var(--tl);
+            &:focus{
+                padding: 0px 10px;
+                box-shadow: inset 0 0 4px var(--on-surface);
+            }
+            &:hover{
+                box-shadow: inset 0 0 4px var(--on-surface-variant);
+            }
+        }
+        label{
+            color: var(--on-surface-variant);
+            transition: var(--ts);
+        }
+        input:is(:focus) +label {
+            left: -30px;
+        }
+    }
+</style>
+<script>
+    let searchForm = document.querySelector(".search-from") as HTMLBaseElement
+    let btnSearch = document.querySelector(".btn-search ") as HTMLButtonElement;
+    let iconSearch = document.querySelector(".btn-search i") as HTMLBaseElement
+    btnSearch.addEventListener("click" , ()=>{
+        iconSearch.classList.toggle("bi-x-lg");
+        searchForm.classList.toggle("active")
+    })
+</script>

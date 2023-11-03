@@ -1,0 +1,70 @@
+---
+// interface Props {
+//   title: string;
+//   body: string;
+//   href: string;
+// }
+
+// const { href, title, body } = Astro.props;
+import { Image } from "astro:assets";
+import controlImg from "../assets/img/slider-control.jpg";
+---
+
+<div class="card-box relative">
+  <figure>
+    <Image
+      src={controlImg}
+      alt="name-movies"
+      quality={20}
+      format="avif"
+      class="img-cover poster-box"
+    />
+  </figure>
+  <h5 class="title-moive fs-r-20 fw-700 py-7">
+    Sound of Freedom Sound of Freedom
+  </h5>
+  <div class="review d-flex align-items-center justify-space-between">
+    <div class="rate">
+      <i class="bi bi-star-fill fs-12"></i>
+      <span class="fs-r-18 fw-700">8.5</span>
+    </div>
+    <p class="data fs-r-16 rate-badge py-2 px-4 round-4">2023</p>
+  </div>
+  <a href="#!" title="Sound of Freedom Sound of Freedom" class="card-btn"></a>
+</div>
+<style lang="scss">
+  .card-box {
+    
+    width: 200px;
+    max-width: 100%;
+	
+
+    figure {
+      width: 100%;
+      box-shadow: var(--shadow-1);
+      border-radius: 16px;
+    }
+    .title-moive {
+      color: var(--white);
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      width: 100%;
+    }
+    .review {
+      gap: 12px;
+      color: var(--text-color);
+	  .rate{
+		
+		i{
+		color: var(--rating-color);
+		margin-right: 5px;
+	  }
+	  }
+    }
+	.card-btn{
+		position: absolute;
+		inset: 0;
+	}
+  }
+</style>

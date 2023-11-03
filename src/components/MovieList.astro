@@ -1,0 +1,110 @@
+---
+// interface props {
+//     label:string,
+//     title:string,
+// }
+// const {title , label} = Astro.props;
+import Card from "./Card.astro";
+---
+
+<section class="move-list" aria-label="as">
+  <div class="container-full">
+    <div class="title-wrpper my-12">
+      <h4 class="t-large fs-r-24 fw-800">upcoming movie</h4>
+    </div>
+    <div class="swiper movie-swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <Card />
+        </div>
+        <div class="swiper-slide">
+          <Card />
+        </div>
+        <div class="swiper-slide">
+          <Card />
+        </div>
+        <div class="swiper-slide">
+          <Card />
+        </div>
+        <div class="swiper-slide">
+          <Card />
+        </div>
+        <div class="swiper-slide">
+          <Card />
+        </div>
+        <div class="swiper-slide">
+          <Card />
+        </div>
+        <div class="swiper-slide">
+          <Card />
+        </div>
+        <div class="swiper-slide">
+          <Card />
+        </div>
+      </div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+    </div>
+  </div>
+</section>
+<style lang="scss">
+  .move-list {
+    min-height: 50vh;
+  }
+  .swiper {
+    width: 100%;
+    height: 100%;
+    .swiper-slide {
+      @media (max-width: 640px) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+    .swiper-button-next,
+    .swiper-button-prev {
+      background-color: var(--banner-background);
+      width: 60px;
+    height: 70px;
+          top: 50%;
+    transform: translateY(-50%);
+      opacity: 1;
+      
+      transition: var(--ts);
+      @media (max-width:480px){
+        width: 40px;
+        height: 50px;
+      }
+      &::after {
+        font-size: 45px;
+        // color: var(--white);
+        color: #dddfe4;
+        @media (max-width:480px){
+        font-size: 24px;
+      }
+      }
+    }
+    .swiper-button-next{
+        right: -0.5px;
+        border-radius: 18px 4px 4px 18px
+    }
+    .swiper-button-prev{
+        left: 0;
+        border-radius: 4px 18px 18px 4px;
+    }
+    
+    .swiper-button-next.swiper-button-disabled, .swiper-button-prev.swiper-button-disabled{
+        
+        cursor: not-allowed;
+        pointer-events: visible;
+        &::after{
+            color: var( --text-color);
+        }
+  
+    }
+  }
+  .t-large {
+    text-transform: capitalize;
+    color: var(--white);
+  }
+</style>

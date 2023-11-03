@@ -1,0 +1,123 @@
+---
+const headers = {
+  Authorization:
+    "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3YzkzYmYxYzZiZTFhNTg5OTA4NmM3MTlkY2ZmNGM5MCIsInN1YiI6IjY1MWY3NjMwZjA0ZDAxMDBmZmVlM2I2NyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.RI47bg-GFuAxe4PclvqxwsgvhPWMZ42whboBUmQoXo0",
+};
+let list = await fetch("https://api.themoviedb.org/3/genre/movie/list" ,{headers})
+let dataList = await list.json()
+
+
+
+---
+<aside class="side-menu ">
+    <div class="container">
+        <div class="side-list px-9">
+            <p class="title-side fs-r-24 fw-700 pb-7"> genres</p>
+            <ul class="link-side">
+                
+                {
+                    dataList.genres.map((li:any)=>(
+                        <li><a href={li.id}  class="fs-r-16 "> {li.name} </a></li>
+                    ))
+                }
+            </ul>
+        </div>
+        <div class="side-list px-9  ">
+            <p class="title-side fs-r-24 fw-700 pb-7"> follow us</p>
+            <ul class="link-side last-link">
+                <li><a href="#!" class="fs-r-16 ">
+                    <i class="bi bi-facebook pr-2"></i>
+                    facebook
+                </a></li>
+                <li><a href="#!" class="fs-r-16 ">
+                    <i class="bi bi-instagram pr-2"></i>
+                    instagram
+                </a></li>
+                <li><a href="#!" class="fs-r-16 ">
+                    <i class="bi bi-twitter-x pr-2"></i>
+                    twitter
+                </a></li>
+                <li><a href="#!" class="fs-r-16 ">
+                    <i class="bi bi-telegram pr-2"></i>
+                    telegram
+                </a></li>
+            </ul>
+        </div>
+        
+    </div>
+</aside>
+<style lang="scss">
+    .side-menu{
+        overflow-y: scroll;
+        background-color: var(--background);
+         z-index: 1023;
+        @media(max-width:991px){
+            left: -260px;
+            transition: var(--tl);
+            border-top: 1px solid var(--on-surface-variant);
+          
+        }
+        &.active{
+            left: 0;
+            .side-list{
+                visibility: visible;
+                opacity: 1;
+            }
+        }
+       
+        .side-list{
+            transition: var(--tl);
+            margin-top: 4vh;
+            
+            @media(max-width:991px){
+            visibility: hidden;
+            opacity: 0;
+        }
+            .title-side{
+                text-transform: capitalize;
+                color: var(--white);
+                
+            }
+            .link-side{
+                display: grid;
+                gap: 12px;
+                
+            }
+            .last-link{
+                margin-bottom: 12vh;
+            }
+            li{
+                a{
+                    text-transform: capitalize;
+                    color: var(--text-color);
+                    transition: var(--ts);
+                    &:hover{
+                        color: var(--white);
+                        transform: translateX(10px);
+                    }
+                }
+            }
+        }
+        &::-webkit-scrollbar-thumb{
+            background-color: transparent;
+        }
+        &::-webkit-scrollbar-button{
+            height: 16px;
+        }
+        &:is(:hover , :focus-within)::-webkit-scrollbar-thumb{
+            background-color: var(--banner-background);
+        }
+    }
+</style>
+
+<script>
+    let sideMenu = document.querySelector(".side-menu") as HTMLBaseElement;
+    let btnSide = document.querySelector(".btn-side") as HTMLButtonElement;
+    let header = document.querySelector("header") as HTMLBaseElement
+    sideMenu.style.top= `${header.offsetHeight}px`
+    btnSide.addEventListener("click" , ()=>{
+        btnSide.classList.toggle("active")
+        sideMenu.classList.toggle("active")
+    })
+
+</script>

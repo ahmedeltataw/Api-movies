@@ -1,0 +1,202 @@
+---
+import { Image } from "astro:assets";
+import heroImg from "../assets/img/slider-banner.jpg"
+import controlImg from "../assets/img/slider-control.jpg"
+---
+<section class="hero " aria-label="popular">
+    
+        <div class="inner-banner relative">
+            <div class="slider-banner relative">
+                <div class="slider-banner-items active">
+                    <Image src={heroImg} alt="a" quality={30} format="avif" height={700} class="img-cover " loading="eager" />
+                    <div class="details-banner absolute">
+                        <h3 class="title-banner fs-r-48 fw-700"> Sound of Freedom Sound of Freedom </h3>
+                        <div class="details mt-8">
+                            <div class="review d-flex align-items-center">
+                                <p class="year fs-r-16">2023</p>
+                                <p class="rate rate-badge fs-r-16 py-2 px-4 round-4">7.5</p>
+                            </div>
+                            <p class="genre mb-8  fs-r-16">Action,Adventure,Animation,Comedy</p>
+                            <p class="overview mb-10  fs-r-16">
+                                Robert McCall finds himself at home in Southern Italy but he discovers his friends are under the control of local crime bosses. As events turn deadly, McCall knows what he has to do: become his friends' protector by taking on the mafia
+                            </p>
+                            <button type="button" aria-label="watch now" class="btn btn-skew round-8">
+                                <a href="#!" class="px-7 py-5">
+                                    <i class="bi bi-play-circle pr-2"></i>
+                                    watch now
+                                </a>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="slider-control">
+                <div class="inner-control d-flex">
+                    <button type="button" aria-label="active-mo" class="btn control-btn poster-box active">
+                        <Image src={controlImg} alt="name-movies" quality={20} format="avif" class="img-cover" draggable="false" />
+                    </button>
+                    <button type="button" aria-label="active-mo" class="btn control-btn poster-box ">
+                        <Image src={controlImg} alt="name-movies" quality={20} format="avif" class="img-cover" draggable="false" />
+                    </button>
+                    <button type="button" aria-label="active-mo" class="btn control-btn poster-box ">
+                        <Image src={controlImg} alt="name-movies" quality={20} format="avif" class="img-cover" draggable="false" />
+                    </button>
+                    <button type="button" aria-label="active-mo" class="btn control-btn poster-box ">
+                        <Image src={controlImg} alt="name-movies" quality={20} format="avif" class="img-cover" draggable="false" />
+                    </button>
+                    <button type="button" aria-label="active-mo" class="btn control-btn poster-box ">
+                        <Image src={controlImg} alt="name-movies" quality={20} format="avif" class="img-cover" draggable="false" />
+                    </button>
+                    <button type="button" aria-label="active-mo" class="btn control-btn poster-box ">
+                        <Image src={controlImg} alt="name-movies" quality={20} format="avif" class="img-cover" draggable="false" />
+                    </button>
+                    <button type="button" aria-label="active-mo" class="btn control-btn poster-box ">
+                        <Image src={controlImg} alt="name-movies" quality={20} format="avif" class="img-cover" draggable="false" />
+                    </button>
+                    <button type="button" aria-label="active-mo" class="btn control-btn poster-box ">
+                        <Image src={controlImg} alt="name-movies" quality={20} format="avif" class="img-cover" draggable="false" />
+                    </button>
+                    <button type="button" aria-label="active-mo" class="btn control-btn poster-box ">
+                        <Image src={controlImg} alt="name-movies" quality={20} format="avif" class="img-cover" draggable="false" />
+                    </button>
+                    
+                   
+                </div>
+            </div>
+        </div>
+    
+</section>
+<style lang="scss">
+    .hero{
+       
+        border-radius: 24px;
+
+
+        .slider-banner{
+            height: 600px;
+            width: 100%;
+            overflow: hidden;
+          
+            .slider-banner-items{
+                height: 100%;
+                width: 100%;
+                position: absolute;
+                top: 0;
+                left: 120%;
+                transition: var(--ts);
+                opacity: 0;
+                visibility: hidden;
+                
+                &.active{
+                    opacity: 1;
+                    visibility: visible;
+                    left: 0;
+                }
+                &::before{
+                    content: "";
+                    position: absolute;
+                    inset: 0;
+                    background-image: linear-gradient(var(--banner-overlay));
+                    border-radius: 24px;
+                    
+                }
+               
+                img{
+                    
+                    border-radius: 24px;
+                }
+
+                // 
+                .details-banner{
+                    left: 24px;
+                    right: 24px;
+                    bottom: 180px;
+                    @media (max-width: 767px){
+                        bottom: 200px;
+                    }
+                    
+                        max-width: 500px;
+                    color: var(--text-color);
+                    .title-banner{
+                        color: var(--white);
+                        -webkit-line-clamp: 3;
+                        line-height: 1.7;
+                    }
+                    .review{
+                        gap: 10px;
+                        margin-bottom: 15px ;
+                        
+                    }
+                    &:is( .title-banner ){
+                        display: -webkit-box;
+                        -webkit-box-orient:vertical;
+                        overflow: hidden;
+                    }
+                    .overview{
+                        -webkit-line-clamp: 2;
+                        line-height: 1.8;
+                        
+                        display: -webkit-box;
+                        -webkit-box-orient:vertical;
+                        overflow: hidden;
+                    }
+                   .btn-skew{
+                    background-color: var(--primary-variant);
+                    &::before{
+                        background-color: var(--primary);
+                    }
+                   }
+                }
+            }
+
+        }
+
+        .slider-control{
+            position: absolute;
+            left: 60%;
+            right: 0px;
+            bottom: 20px;
+            
+            padding: 4px 0px 4px 4px;
+            user-select: none;
+             overflow-x: auto;
+            border-radius: 24px;
+           overscroll-behavior-inline: contain;
+           @media (max-width:767px){
+            left: 30%;
+            
+           }
+           @media (max-width:480px){
+            left: 20px;
+            
+           }
+            &::-webkit-scrollbar {
+                display: none;
+            }
+            .inner-control{
+                gap: 12px;
+               
+                &::after{
+                    content: '';
+                    min-width: 12px;
+                }
+                .control-btn{
+                    width: 120px;
+                    border-radius: 16px;
+                    flex-shrink: 0;
+                    @media (max-width:991px){
+                        width: 100px;
+           }
+                    filter: brightness(.4);
+                    &.active{
+                        filter: brightness(1);
+                        box-shadow: var( --shadow-1);
+                    }
+                }
+            }
+        }
+        
+    }
+
+</style>

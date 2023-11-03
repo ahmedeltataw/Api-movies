@@ -1,0 +1,125 @@
+---
+import { Image } from "astro:assets";
+//import logo img
+import Logo from "../assets/img/logo.png";
+// import compontents
+import Search from '../components/search.astro'
+---
+<header  class="fixed top-0 left-0">
+    <div class="container-full px-12">
+        <nav class="d-flex align-items-center  relative justify-space-between">
+            <a href="/" class="websit-logo">
+                <Image src={Logo} alt="logo-website" format="avif" quality={50}  />
+            </a>
+            <ul class=" d-flex align-items-center lg-max-d-none">
+                <li class="pr-12 fs-r-18 fw-700 nav-link"><a href="#!">movies</a></li>
+                <li class="pr-12 fs-r-18 fw-700 nav-link"><a href="#!">tvshow</a></li>
+                <li class="pr-12 fs-r-18 fw-700 nav-link"><a href="#!">Anime</a></li>
+                <li class=" fs-r-18 fw-700 nav-link"><a href="#!">sports</a></li>
+            </ul>
+            <Search />
+            <div class="btn-icon ">
+                <button type="button" aria-label="open-search" class="btn btn-skew  px-8 round-8 fs-18 btn-search">
+                    <i class="bi bi-search"></i>
+                </button>
+                <button type="button" aria-label="open-side-menu" class="round-8   btn-side btn relative overflow-hidden d-flex justify-center">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    
+                </button>
+                
+            </div>
+            
+        </nav>
+        
+    </div>
+</header>
+
+<style lang="scss">
+
+    nav{
+        padding: 12px 0;
+        overflow: hidden;
+        .btn-icon{
+            display: none;
+            
+            @media(max-width:991px){
+                display: flex;
+            }
+            .btn-skew {
+                background-color: var(--banner-background);
+                color: var(--on-surface-variant);
+                &:hover{
+                    color: #fff;
+                }
+                &::before{
+                    background-color: var(--primary-variant);
+                }
+            }
+            .btn-search , .btn-side{
+                height: 48px;
+                i{
+                    transition: .3s ease-in-out;
+                    
+                }
+            }
+            .btn-side{
+                width: 50px;
+                transition: .3s ease-in-out;
+                margin-left: 15px;
+                background-color: var(--banner-background);
+
+            span{
+                width: 40px;
+                height: 2px;
+                background-color: var(--on-surface-variant);
+                position: absolute;
+                transition: .3s ease-in-out;
+                &:nth-child(1){
+                    top: 15px;
+                }
+                &:nth-child(2){
+                    top: 25px;
+                }
+                &:nth-child(3){
+                    top: 35px;
+                }
+            }
+            &.active{
+                
+                span{
+                    background-color: var(--on-surface);
+                    width: 30px;
+                    &:nth-child(1){
+                        transform: translateX(-5px);
+                    }
+                    &:nth-child(2){
+                        transform: translateX(5px);
+                        
+                    }
+                    &:nth-child(3){
+                       transform: translateX(-5px);
+                    }
+                }
+            }
+        }
+        }
+        .nav-link{
+            a{
+                color: var(--on-surface-variant);
+                text-transform: capitalize;
+            }
+        }
+        
+    }
+
+    header{
+        z-index: 9999;
+        width: 100%;
+        background-color: var(--background);
+         
+    }
+    
+  
+</style>

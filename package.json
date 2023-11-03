@@ -1,0 +1,39 @@
+{
+  "name": "movies",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^1.0.0",
+    "@astrojs/node": "^6.0.2",
+    "aos": "^3.0.0-beta.6",
+    "astro": "^3.2.4",
+    "astro-compressor": "^0.4.0",
+    "astro-google-fonts-optimizer": "^0.2.2",
+    "astro-purgecss": "^3.2.1",
+    "bootstrap-icons": "^1.11.1",
+    "i": "^0.3.7",
+    "purgecss": "^5.0.0",
+    "sharp": "^0.32.6"
+  },
+  "devDependencies": {
+    "@fullhuman/postcss-purgecss": "^5.0.0",
+    "autoprefixer": "^10.4.16",
+    "css-declaration-sorter": "^7.0.3",
+    "cssnano": "^6.0.1",
+    "mqpacker": "^7.0.0",
+    "postcss": "^8.4.31",
+    "postcss-combine-duplicated-selectors": "^10.0.3",
+    "postcss-purgecss": "^5.0.0",
+    "postcss-pxtorem": "^6.0.0",
+    "rucksack-css": "^1.0.2",
+    "sass": "^1.69.5",
+    "swiper": "^10.3.1"
+  }
+}

@@ -1,0 +1,96 @@
+---
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+// import astro compontents library
+import { GoogleFontsOptimizer } from "astro-google-fonts-optimizer";
+// import style
+import "../assets/css/AE.css";
+//library style
+import "../../node_modules/bootstrap-icons/font/bootstrap-icons.min.css";
+import 'swiper/css/bundle';
+// import js
+import Script from "../layouts/scriptLayout.astro";
+// import compontent
+import Nav from "../components/nav.astro";
+import SideMenu from "../components/sideMenu.astro";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+      <!-- <GoogleFontsOptimizer
+        url='https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap'
+      /> -->
+  </head>
+  <body>
+    <Nav />
+    <SideMenu />
+    <slot />
+    <Script />
+  </body>
+</html>
+<style is:global>
+  :root {
+    --background: hsla(220, 17%, 7%, 1);
+    --banner-background: hsla(250, 6%, 20%, 1);
+    --white-alpha-20: hsla(0, 0%, 100%, 0.2);
+    --on-background: hsla(220, 100%, 95%, 1);
+    --on-surface: hsla(250, 100%, 95%, 1);
+    --on-surface-variant: hsla(250, 1%, 44%, 1);
+    --primary: hsla(349, 100%, 43%, 1);
+    --primary-variant: hsla(349, 69%, 51%, 1);
+    --rating-color: hsla(44, 100%, 49%, 1);
+    --surface: hsla(250, 13%, 11%, 1);
+    --text-color: hsla(250, 2%, 59%, 1);
+    --white: hsla(0, 0%, 100%, 1);
+    --banner-overlay: 90deg, hsl(220, 17%, 7%) 0%, hsla(220, 17%, 7%, 0.5) 100%;
+    --bottom-overlay: 180deg, hsla(250, 13%, 11%, 0), hsla(250, 13%, 11%, 1);
+    --shadow-1: 0 1px 4px hsla(0, 0%, 0%, 0.75);
+    --shadow-2: 0 2px 4px hsla(350, 100%, 43%, 0.3);
+    --ts: 250ms ease;
+    --tl: 500ms ease;
+  }
+  html {
+    font-family: 'Kanit', sans-serif;
+    background: var(--background);
+  }
+  *{
+    scroll-behavior: smooth;
+  }
+  ::-webkit-scrollbar{
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-thumb{
+    background-color: var(--banner-background);
+    border-radius: 8px;
+  }
+  /* class project global */
+  .rate-badge{
+    background-color: var(--on-surface-variant);
+                            color: var(--on-surface);
+  }
+  .poster-box{
+    background-image: url("../assets/img/poster-bg-icon.png");
+    aspect-ratio: 2 / 3;
+  }
+  .poster-box{
+    background-repeat: no-repeat;
+    background-color: var(--background);
+    background-size: 50px;
+    background-position: center;
+    overflow: hidden;
+    border-radius: 16px;
+  }
+
+ 
+</style>

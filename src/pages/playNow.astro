@@ -1,0 +1,39 @@
+---
+// export const prerender = true;
+import { Image, getImage } from "astro:assets";
+import Layout from "../layouts/Layout.astro";
+const headers = {
+  Authorization:
+    "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3YzkzYmYxYzZiZTFhNTg5OTA4NmM3MTlkY2ZmNGM5MCIsInN1YiI6IjY1MWY3NjMwZjA0ZDAxMDBmZmVlM2I2NyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.RI47bg-GFuAxe4PclvqxwsgvhPWMZ42whboBUmQoXo0",
+};
+let popular = await fetch("https://api.themoviedb.org/3/movie/popular", {
+  headers,
+});
+let data = await popular.json();
+let baseURL: any = "https://image.tmdb.org/t/p/original";
+
+
+---
+
+<Layout title="a">
+  <div>
+    {
+      data.results.map((i: any) => (
+        <>
+          <h6> {i.vote_average} </h6>
+          <Image
+            src={baseURL+i.backdrop_path}
+            width={1280}
+            height={852}
+            alt="a bird"
+            format="avif"
+            quality={50}
+            class={`${i.title} img-movies`}
+          />
+        </>
+        
+      ))
+    }
+
+  </div>
+</Layout>
