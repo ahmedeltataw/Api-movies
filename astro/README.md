@@ -39,3 +39,4 @@ All commands are run from the root of the project, from a terminal:
 | `pnpm run start`       | Starts a production dev server at  `localhost:3000`     |
 | `pnpm run astro ...`    | Run CLI commands like `astro add`, `astro preview` |
 | `pnpm run astro --help` | Get help using the Astro CLI                       |
+
