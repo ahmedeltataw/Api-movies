@@ -1,5 +1,5 @@
 import Swiper from 'swiper/bundle';
-var swiper = new Swiper(".movie-swiper", {
+ new Swiper(".movie-swiper", {
     slidesPerView: 1,
     spaceBetween: 10,
     navigation: {

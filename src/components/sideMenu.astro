@@ -4,9 +4,27 @@ const headers = {
     "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3YzkzYmYxYzZiZTFhNTg5OTA4NmM3MTlkY2ZmNGM5MCIsInN1YiI6IjY1MWY3NjMwZjA0ZDAxMDBmZmVlM2I2NyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.RI47bg-GFuAxe4PclvqxwsgvhPWMZ42whboBUmQoXo0",
 };
 let list = await fetch("https://api.themoviedb.org/3/genre/movie/list" ,{headers})
-let dataList = await list.json()
+let dataList = await list.json();
 
 
+const genreList: any ={
+    
+    asString(genreIdList:any){
+        
+        
+        let newGenreList = []
+        
+        for(let genreId of genreIdList){
+            
+            this[genreId] && newGenreList.push(this[genreId])
+        }
+        return newGenreList.join(", ")
+        
+    }
+};
+for(let {id , name} of dataList.genres){
+    genreList[id] = name
+}
 
 ---
 <aside class="side-menu ">
@@ -17,9 +35,11 @@ let dataList = await list.json()
                 
                 {
                     dataList.genres.map((li:any)=>(
-                        <li><a href={li.id}  class="fs-r-16 "> {li.name} </a></li>
+                        <li><a href="/movie-List" id={li.id}  class="fs-r-16 items-link"> {li.name} </a></li>
+                        
                     ))
                 }
+                
             </ul>
         </div>
         <div class="side-list px-9  ">
@@ -113,7 +133,9 @@ let dataList = await list.json()
 <script>
     let sideMenu = document.querySelector(".side-menu") as HTMLBaseElement;
     let btnSide = document.querySelector(".btn-side") as HTMLButtonElement;
+  
     let header = document.querySelector("header") as HTMLBaseElement
+    console.log(header.getAttribute)
     sideMenu.style.top= `${header.offsetHeight}px`
     btnSide.addEventListener("click" , ()=>{
         btnSide.classList.toggle("active")

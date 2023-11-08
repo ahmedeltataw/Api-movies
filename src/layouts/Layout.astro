@@ -5,12 +5,12 @@ interface Props {
 
 const { title } = Astro.props;
 // import astro compontents library
-import { GoogleFontsOptimizer } from "astro-google-fonts-optimizer";
+// import { GoogleFontsOptimizer } from "astro-google-fonts-optimizer";
 // import style
 import "../assets/css/AE.css";
 //library style
 import "../../node_modules/bootstrap-icons/font/bootstrap-icons.min.css";
-import 'swiper/css/bundle';
+import "swiper/css/bundle";
 // import js
 import Script from "../layouts/scriptLayout.astro";
 // import compontent
@@ -27,7 +27,7 @@ import SideMenu from "../components/sideMenu.astro";
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
-      <!-- <GoogleFontsOptimizer
+    <!-- <GoogleFontsOptimizer
         url='https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap'
       /> -->
   </head>
@@ -38,7 +38,7 @@ import SideMenu from "../components/sideMenu.astro";
     <Script />
   </body>
 </html>
-<style is:global>
+<style is:global lang="scss">
   :root {
     --background: hsla(220, 17%, 7%, 1);
     --banner-background: hsla(250, 6%, 20%, 1);
@@ -60,30 +60,36 @@ import SideMenu from "../components/sideMenu.astro";
     --tl: 500ms ease;
   }
   html {
-    font-family: 'Kanit', sans-serif;
+    font-family: "Kanit", sans-serif;
     background: var(--background);
   }
-  *{
+  * {
     scroll-behavior: smooth;
   }
-  ::-webkit-scrollbar{
+  ::-webkit-scrollbar {
     width: 8px;
     height: 8px;
   }
-  ::-webkit-scrollbar-thumb{
+  ::-webkit-scrollbar-thumb {
     background-color: var(--banner-background);
     border-radius: 8px;
   }
   /* class project global */
-  .rate-badge{
+  .rate-badge {
     background-color: var(--on-surface-variant);
-                            color: var(--on-surface);
+    color: var(--on-surface);
   }
-  .poster-box{
+  .poster-box {
     background-image: url("../assets/img/poster-bg-icon.png");
     aspect-ratio: 2 / 3;
   }
-  .poster-box{
+  .video-card {
+    background-image: url("../assets/img/video-bg-icon.png");
+    aspect-ratio: 16 / 9;
+    flex-shrink: 0;
+  }
+  .poster-box,
+  .video-card {
     background-repeat: no-repeat;
     background-color: var(--background);
     background-size: 50px;
@@ -91,6 +97,83 @@ import SideMenu from "../components/sideMenu.astro";
     overflow: hidden;
     border-radius: 16px;
   }
+  main {
+    background-color: var(--banner-background);
+    border-top-left-radius: 30px;
+    position: relative;
+    padding: 24px 20px 48px;
+    margin-left: 260px;
+    z-index: 1;
 
- 
+    @media (max-width: 991px) {
+      margin-left: 0;
+      border-top-left-radius: 0;
+    }
+    &::after {
+      content: "";
+      position: fixed;
+      bottom: 0;
+      left: 0;
+
+      width: 100%;
+      height: 100px;
+      background-image: linear-gradient(var(--bottom-overlay));
+      // background-color: red;
+      z-index: 999;
+    }
+  }
+  .swiper {
+    width: 100%;
+    height: 100%;
+  }
+  .btn-skew {
+    background-color: var(--primary-variant);
+    &::before {
+      background-color: var(--primary);
+    }
+  }
+  .search-from{
+    &::after{
+      position: absolute;
+      right: 30px;
+      top: 15px;
+    }
+    &.searching {
+      &::after {
+        display: block;
+      }
+    }
+  }
+  .load-more{
+    &::after{
+      margin-left: 10px;
+    }
+    &.loading {
+      &::after {
+        display: block;
+      }
+    }
+  }
+  .search-from , .load-more {
+    &::after {
+      content: "";
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      border: 3px solid var(--white);
+      border-inline-end-color: transparent;
+      animation: loading 500ms linear infinite;
+      display: none;
+
+      @keyframes loading {
+        0% {
+          transform:  rotate(0);
+        }
+        100% {
+          transform:  rotate(1turn);
+        }
+      }
+    }
+    
+  }
 </style>

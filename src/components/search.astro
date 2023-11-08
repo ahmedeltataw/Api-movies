@@ -11,7 +11,7 @@
     .search-from{
         width: 100%;
         height: 48px;
-        max-width: 300px;
+        max-width: 400px;
         transition: var(--ts);
         
         @media(max-width:991px){
@@ -34,6 +34,8 @@
             outline: 0;
             color:var(--white);
             transition: var(--tl);
+            
+            
             &:focus{
                 padding: 0px 10px;
                 box-shadow: inset 0 0 4px var(--on-surface);
@@ -41,6 +43,7 @@
             &:hover{
                 box-shadow: inset 0 0 4px var(--on-surface-variant);
             }
+            
         }
         label{
             color: var(--on-surface-variant);

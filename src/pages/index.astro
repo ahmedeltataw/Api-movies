@@ -1,41 +1,15 @@
 ---
+export const prerender = true;
 import Layout from "../layouts/Layout.astro";
 import MovieList from "../components/MovieList.astro";
 import Hero from "../components/hero.astro";
-export const prerender = true;
 ---
 
 <Layout title="Welcome to Astro.">
   <main>
     <Hero />
-    <MovieList />
+    <MovieList title="upcoming movie" label="upcoming movie" />
+    <MovieList title="ahmed movie" label="ahmed movie" />
   </main>
 </Layout>
-<style lang="scss">
-  main {
-    background-color: var(--banner-background);
-    border-top-left-radius: 30px;
-    position: relative;
-    padding: 24px 20px 48px;
-    margin-left: 260px;
-	
-    @media (max-width: 991px) {
-      margin-left: 0;
-      border-top-left-radius: 0;
-	 
-    }
-     &::after {
-      content: "";
-      position: fixed;
-      bottom: 0;
-      left: 0;
 
-      width: 100%;
-      height: 100px;
-      background-image: linear-gradient(var(--bottom-overlay));
-      // background-color: red;
-      z-index: 999;
-     
-    }
-  }
-</style>

@@ -1,0 +1,12 @@
+---
+export const prerender = true;
+import Layout from "../layouts/Layout.astro";
+import HeroDetails from "../components/heroDetails.astro";
+import MovieList from "../components/MovieList.astro";
+---
+<Layout title="Welcome to detail.">
+  <main>
+    <HeroDetails />
+    <MovieList title="You May Also Like" label="upcoming movie" />
+  </main>
+</Layout>

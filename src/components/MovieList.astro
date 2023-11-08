@@ -1,45 +1,46 @@
 ---
-// interface props {
-//     label:string,
-//     title:string,
-// }
-// const {title , label} = Astro.props;
+interface props {
+    label:string,
+    title:string,
+}
+const {title , label} = Astro.props;
 import Card from "./Card.astro";
+import controlImg from "../assets/img/slider-control.jpg";
 ---
 
-<section class="move-list" aria-label="as">
+<section class="move-list" aria-label= {label}>
   <div class="container-full">
     <div class="title-wrpper my-12">
-      <h4 class="t-large fs-r-24 fw-800">upcoming movie</h4>
+      <h4 class="t-large fs-r-24 fw-800"> {title} </h4>
     </div>
     <div class="swiper movie-swiper">
       <div class="swiper-wrapper">
         <div class="swiper-slide">
-          <Card />
+          <Card title="Sound of Freedom Sound of Freedom" year={2023} rate={8.5} href="/detail" img={controlImg} alt="movie"  />
         </div>
         <div class="swiper-slide">
-          <Card />
+          <Card title="Sound of Freedom Sound of Freedom" year={2023} rate={8.5} href="/detail" img={controlImg} alt="movie"  />
         </div>
         <div class="swiper-slide">
-          <Card />
+          <Card title="Sound of Freedom Sound of Freedom" year={2023} rate={8.5} href="/detail" img={controlImg} alt="movie"  />
         </div>
         <div class="swiper-slide">
-          <Card />
+          <Card title="Sound of Freedom Sound of Freedom" year={2023} rate={8.5} href="/detail" img={controlImg} alt="movie"  />
         </div>
         <div class="swiper-slide">
-          <Card />
+          <Card title="Sound of Freedom Sound of Freedom" year={2023} rate={8.5} href="/detail" img={controlImg} alt="movie"  />
         </div>
         <div class="swiper-slide">
-          <Card />
+          <Card title="Sound of Freedom Sound of Freedom" year={2023} rate={8.5} href="/detail" img={controlImg} alt="movie"  />
         </div>
         <div class="swiper-slide">
-          <Card />
+          <Card title="Sound of Freedom Sound of Freedom" year={2023} rate={8.5} href="/detail" img={controlImg} alt="movie"  />
         </div>
         <div class="swiper-slide">
-          <Card />
+          <Card title="Sound of Freedom Sound of Freedom" year={2023} rate={8.5} href="/detail" img={controlImg} alt="movie"  />
         </div>
         <div class="swiper-slide">
-          <Card />
+          <Card title="Sound of Freedom Sound of Freedom" year={2023} rate={8.5} href="/detail" img={controlImg} alt="movie"  />
         </div>
       </div>
       <div class="swiper-button-prev"></div>
@@ -52,8 +53,7 @@ import Card from "./Card.astro";
     min-height: 50vh;
   }
   .swiper {
-    width: 100%;
-    height: 100%;
+    
     .swiper-slide {
       @media (max-width: 640px) {
         display: flex;

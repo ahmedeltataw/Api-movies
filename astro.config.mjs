@@ -17,6 +17,8 @@ export default defineConfig({
     domains: ["astro.build"]
   },
   compressHTML: true,
+  optimizeHoistedScript: true,
+  devOverlay: true,
   integrations: [mdx(), purgecss(), compressor({
     gzip: true,
     brotli: false

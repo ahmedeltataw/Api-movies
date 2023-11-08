@@ -2,10 +2,10 @@ import fs from 'node:fs';
 import http from 'node:http';
 import { TLSSocket } from 'node:tls';
 import 'cookie';
-import { l as levels, d as dateTimeFormat, A as AstroCookies, a as attachCookiesToResponse, c as createAPIContext, b as callEndpoint, e as callMiddleware, L as Logger, f as AstroIntegrationLogger, g as getSetCookiesFromResponse, manifest } from './manifest_6ac02ff1.mjs';
+import { l as levels, d as dateTimeFormat, A as AstroCookies, a as attachCookiesToResponse, c as createAPIContext, b as callEndpoint, e as callMiddleware, L as Logger, f as AstroIntegrationLogger, g as getSetCookiesFromResponse, manifest } from './manifest_e82e870f.mjs';
 import { yellow, dim, bold, cyan, red, reset } from 'kleur/colors';
-import { trimSlashes, joinPaths, slash, prependForwardSlash, removeTrailingForwardSlash, collapseDuplicateSlashes } from '@astrojs/internal-helpers/path';
-import { A as AstroError, G as GetStaticPathsRequired, i as InvalidGetStaticPathsReturn, j as InvalidGetStaticPathsEntry, k as GetStaticPathsExpectedParams, l as GetStaticPathsInvalidRouteParam, P as PageNumberParamNotFound, n as GetStaticPathsRemovedRSSHelper, o as NoMatchingStaticPathFound, p as PrerenderDynamicEndpointPathCollide, q as LocalsNotAnObject, R as ReservedSlotName, t as renderSlotToString, u as renderJSX, v as chunkToString, C as ClientAddressNotAvailable, S as StaticClientAddressNotAvailable, w as ResponseSentError, x as renderPage$1, y as AstroUserError } from './chunks/astro_ac9342a0.mjs';
+import { t as trimSlashes, j as joinPaths, s as slash, p as prependForwardSlash, r as removeTrailingForwardSlash, d as collapseDuplicateSlashes } from './chunks/astro-assets-services_db00f87b.mjs';
+import { A as AstroError, G as GetStaticPathsRequired, k as InvalidGetStaticPathsReturn, l as InvalidGetStaticPathsEntry, n as GetStaticPathsExpectedParams, o as GetStaticPathsInvalidRouteParam, P as PageNumberParamNotFound, p as GetStaticPathsRemovedRSSHelper, q as NoMatchingStaticPathFound, t as PrerenderDynamicEndpointPathCollide, u as LocalsNotAnObject, R as ReservedSlotName, v as renderSlotToString, w as renderJSX, x as chunkToString, C as ClientAddressNotAvailable, S as StaticClientAddressNotAvailable, y as ResponseSentError, z as renderPage$1, B as AstroUserError } from './chunks/astro_7807166c.mjs';
 import 'html-escaper';
 import 'clsx';
 import buffer from 'node:buffer';
@@ -21,6 +21,11 @@ import { renderers } from './renderers.mjs';
 import 'string-width';
 import 'mime';
 import 'path-to-regexp';
+import 'probe-image-size';
+import 'node:os';
+import 'node:worker_threads';
+import 'module';
+import 'worker_threads';
 
 let lastMessage;
 let lastMessageCount = 1;
@@ -508,6 +513,7 @@ function createResult(args) {
     renderers: args.renderers,
     clientDirectives: args.clientDirectives,
     compressHTML: args.compressHTML,
+    partial: args.partial,
     pathname: args.pathname,
     cookies,
     /** This function returns the `Astro` faux-global */
@@ -599,6 +605,7 @@ async function renderPage({ mod, renderContext, env, cookies }) {
     clientDirectives: env.clientDirectives,
     compressHTML: env.compressHTML,
     request: renderContext.request,
+    partial: !!mod.partial,
     site: env.site,
     scripts: renderContext.scripts,
     ssr: env.ssr,
@@ -714,6 +721,12 @@ class Pipeline {
    */
   setMiddlewareFunction(onRequest) {
     this.#onRequest = onRequest;
+  }
+  /**
+   * Removes the current middleware function. Subsequent requests won't trigger any middleware.
+   */
+  unsetMiddlewareFunction() {
+    this.#onRequest = void 0;
   }
   /**
    * Returns the current environment
@@ -1013,7 +1026,7 @@ class App {
    * If it is a known error code, try sending the according page (e.g. 404.astro / 500.astro).
    * This also handles pre-rendered /404 or /500 routes
    */
-  async #renderError(request, { status, response: originalResponse }) {
+  async #renderError(request, { status, response: originalResponse, skipMiddleware = false }) {
     const errorRouteData = matchRoute("/" + status, this.#manifestData);
     const url = new URL(request.url);
     if (errorRouteData) {
@@ -1037,12 +1050,22 @@ class App {
           status
         );
         const page = await mod.page();
-        if (mod.onRequest) {
+        if (skipMiddleware === false && mod.onRequest) {
           this.#pipeline.setMiddlewareFunction(mod.onRequest);
+        }
+        if (skipMiddleware) {
+          this.#pipeline.unsetMiddlewareFunction();
         }
         const response2 = await this.#pipeline.renderRoute(newRenderContext, page);
         return this.#mergeResponses(response2, originalResponse);
       } catch {
+        if (skipMiddleware === false && mod.onRequest) {
+          return this.#renderError(request, {
+            status,
+            response: originalResponse,
+            skipMiddleware: true
+          });
+        }
       }
     }
     const response = this.#mergeResponses(new Response(null, { status }), originalResponse);
@@ -1646,9 +1669,11 @@ const adapter = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
   start
 }, Symbol.toStringTag, { value: 'Module' }));
 
-const _page0  = () => import('./chunks/node_90c712dc.mjs');
-const _page1  = () => import('./chunks/index_b57093a7.mjs');
-const _page2  = () => import('./chunks/playNow_c2cb1d8d.mjs');const pageMap = new Map([["node_modules/astro/dist/assets/endpoint/node.js", _page0],["src/pages/index.astro", _page1],["src/pages/playNow.astro", _page2]]);
+const _page0  = () => import('./chunks/node_9b40f093.mjs');
+const _page1  = () => import('./chunks/index_f8783c42.mjs');
+const _page2  = () => import('./chunks/movie-List_f95b04ae.mjs');
+const _page3  = () => import('./chunks/playNow_da434a8a.mjs');
+const _page4  = () => import('./chunks/detail_c3d92084.mjs');const pageMap = new Map([["node_modules/astro/dist/assets/endpoint/node.js", _page0],["src/pages/index.astro", _page1],["src/pages/movie-List.astro", _page2],["src/pages/playNow.astro", _page3],["src/pages/detail.astro", _page4]]);
 const _manifest = Object.assign(manifest, {
 	pageMap,
 	renderers,

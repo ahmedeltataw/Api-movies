@@ -1,36 +1,39 @@
 ---
-// interface Props {
-//   title: string;
-//   body: string;
-//   href: string;
-// }
+interface Props {
+  title: string;
+  year: number;
+  rate: number;
+  href: string;
+  img: any;
+  alt: string;
+}
 
-// const { href, title, body } = Astro.props;
+const { href, title, year,rate,img ,alt} = Astro.props;
 import { Image } from "astro:assets";
-import controlImg from "../assets/img/slider-control.jpg";
+
 ---
 
 <div class="card-box relative">
   <figure>
     <Image
-      src={controlImg}
-      alt="name-movies"
+      src={img}
+      alt= {alt}
       quality={20}
       format="avif"
       class="img-cover poster-box"
     />
   </figure>
   <h5 class="title-moive fs-r-20 fw-700 py-7">
-    Sound of Freedom Sound of Freedom
+    {title}
   </h5>
   <div class="review d-flex align-items-center justify-space-between">
     <div class="rate">
       <i class="bi bi-star-fill fs-12"></i>
-      <span class="fs-r-18 fw-700">8.5</span>
+      <span class="fs-r-18 fw-700">  {rate} </span>
     </div>
-    <p class="data fs-r-16 rate-badge py-2 px-4 round-4">2023</p>
+    <p class="data fs-r-16 rate-badge py-2 px-4 round-4"> {year} </p>
   </div>
-  <a href="#!" title="Sound of Freedom Sound of Freedom" class="card-btn"></a>
+  <a href={href} title="Sound of Freedom Sound of Freedom" class="card-btn"></a>
 </div>
 <style lang="scss">
   .card-box {
