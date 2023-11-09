@@ -3,9 +3,11 @@ import compressor from "astro-compressor";
 import mdx from "@astrojs/mdx";
 import node from "@astrojs/node";
 
-// import vercel from "@astrojs/vercel/serverless";
+
 
 import purgecss from "astro-purgecss";
+
+import vercel from "@astrojs/vercel/serverless";
 
 // https://astro.build/config
 export default defineConfig({
@@ -22,11 +24,13 @@ export default defineConfig({
   integrations: [mdx(), purgecss(), compressor({
     gzip: true,
     brotli: false
-  }),],
-  output: 'server',
-  adapter: node({
-    mode: 'middleware'
-  })
+  })],
+  output: 'server'
+  // adapter: node({
+  //   mode: 'middleware'
+  // })
 
   // adapter: vercel()
+  ,
+  adapter: vercel()
 });
