@@ -43,11 +43,12 @@ for (let movie of Movies) {
       {
         Movies.map((sliderItems: any) => (
           <div class="slider-banner-items ">
-            <link rel="preload" as="image" href={sliderItems.backdrop_path}>
+            
             <Image
               src={sliderItems.backdrop_path}
               alt={sliderItems.title}
-              height={720}
+              height={700}
+              widths={[ 300, 780]}
               width={1280}
               class="img-cover "
               loading="eager"
@@ -94,7 +95,8 @@ for (let movie of Movies) {
                 src={controlBtn.poster_path}
                 alt={controlBtn.title}
                 height={300}
-                width={200}
+                width={154}
+                widths={[ 92]}
                 class="img-cover"
                 draggable="false"
               />
