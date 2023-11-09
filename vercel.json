@@ -1,0 +1,10 @@
+{
+  "compression": {
+    "threshold": 10240,
+    "level": 9,
+    "strategy": "gzip"
+  },
+  "routes": [
+    { "src": "/(.*)", "dest": "/index.html" }
+  ]
+}

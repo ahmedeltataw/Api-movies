@@ -28,7 +28,7 @@ let Movies = fetchData.results;
 
 for (let movie of Movies) {
   movie.poster_path = await processImage(
-    `https://image.tmdb.org/t/p/w185${movie.poster_path}`
+    `https://image.tmdb.org/t/p/w154${movie.poster_path}`
   );
   movie.backdrop_path = await processImage(
     `https://image.tmdb.org/t/p/w1280${movie.backdrop_path}`
@@ -42,6 +42,7 @@ for (let movie of Movies) {
       {
         Movies.map((sliderItems: any) => (
           <div class="slider-banner-items ">
+            <link rel="preload" as="image" href={sliderItems.backdrop_path}>
             <Image
               src={sliderItems.backdrop_path}
               alt={sliderItems.title}
@@ -50,6 +51,7 @@ for (let movie of Movies) {
               class="img-cover "
               loading="eager"
             />
+            
             <div class="details-banner absolute">
               <h3 class="title-banner fs-r-48 fw-700">{sliderItems.title}</h3>
               <div class="details mt-8">
@@ -69,11 +71,9 @@ for (let movie of Movies) {
                 <button
                   type="button"
                   aria-label="watch now"
-                  class="btn btn-skew round-8">
-                  <a href="#!" class="px-7 py-5">
-                    <i class="bi bi-play-circle pr-2" />
+                  class="btn btn-skew round-8 px-7 py-5">
+                  <i class="bi bi-play-circle pr-2" />
                     watch now
-                  </a>
                 </button>
               </div>
             </div>
