@@ -1,0 +1,54 @@
+---
+import FormGroup from "@components/ui/FormGroup.astro";
+---
+
+<form class="heroSearch mt-12" id="searchForm">
+  <FormGroup
+    type="search"
+    isLabel={false}
+    IsButton={{
+      aria: "btn-seacrh",
+      Title: "search",
+      ClassName:
+        " btn-up absolute top-50 md:inset-in-e-3 translate-y--50 inset-in-e-7",
+    }}
+    InputClassName="w-full h-full ps-5 round-full "
+    FormClassName="md:w-6/10  mx-auto relative h-30 w-full md:p-in-0 p-in-4"
+    place="Search for a movie, tv show, person......"
+    id="HeroSearch"
+    name="search"
+  />
+</form>
+<script>
+  let searchForm = document.getElementById("searchForm") as HTMLFormElement;
+  if(searchForm !== null) searchForm.addEventListener("submit",(e:Event)=>{
+    e.preventDefault();
+    let formData = new FormData(searchForm);
+    let SearchTrim = formData.get('search')?.toString();
+    console.log(SearchTrim)
+    if(!SearchTrim || SearchTrim.length === 0) return ;
+    let url = new URL("/search" ,window.location.origin );
+    url.searchParams.set('q' , SearchTrim)
+    window.location.assign(url.toString())
+    // window.location.href = url.toString();
+  })
+</script>
+
+
+<!-- <script>
+  function handleSubmit(e: Event) {
+    e.preventDefault();
+    const searchInput = document.getElementById(
+      "HeroSearch"
+    ) as HTMLInputElement;
+    const query = searchInput?.value.trim();
+    console.log(query)
+    if (query) {
+      const encodedQuery = encodeURIComponent(query);
+      console.log(encodedQuery)
+      window.location.href = `/search?q=${encodedQuery}`;
+    }
+  }
+  let searchForm = document.getElementById("searchForm") as HTMLFormElement;
+  if (searchForm !== null) searchForm.addEventListener("submit", handleSubmit);
+</script> -->

@@ -1,0 +1,14 @@
+---
+import noPoster from "@assets/images/error/no-poster.png";
+import { Image } from "astro:assets";
+---
+
+<Image
+  src={noPoster}
+  alt={`no poster found`}
+  onload="this.classList.add('loaded')"
+  format="webp"
+  quality={70}
+  class={`img-cover round-8 img-t notFoundImg  overflow-hidden`}
+/>
+<!-- <img src={noPoster.src} alt={`no poster found`}   /> -->

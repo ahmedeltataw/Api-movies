@@ -1,0 +1,25 @@
+@use "../helpers/color" as *;
+@use "../helpers/extend" as *;
+
+.mainHeading{
+    .tapContainer{
+        background-color: var(--text);
+        .tabValues{
+            .tap{
+                color: var(--BG);
+                transition: $t-s;
+                z-index: 3;
+                cursor: pointer;
+                &.active{
+                    color: var(--text);
+                }
+            }
+            .activeColor{
+                background-color: var(--hover-1);
+                left:var(--x);
+                z-index: 1;
+                transition: left cubic-bezier(0.88, -0.35, 0.565, 1.35) 0.4s;
+            }
+        }
+    }
+}

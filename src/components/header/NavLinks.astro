@@ -1,0 +1,42 @@
+---
+import Link from "@components/ui/Link.astro";
+import { links } from "@data/data";
+import type { LinkType } from "../../types/type";
+---
+
+<ul
+  class="navLinks d-flex align-items-center gap-10 
+  md-max:absolute md-max:flex-col md-max:w-screen md-max:h-100 inset-in-s-0  md-max:align-items-start
+  md-max:gap-0 md-max:ps-10 md-max:overflow-hidden  md-max:d-none 
+  "
+  id="navMenu"
+>
+  {
+    links.map((link: LinkType) => (
+      <li class="md:pt-0 pt-7">
+        <Link
+          href={link.href}
+          Class="text-transform-capitalize md:fs-18  fw-500 md:o-90"
+          aria-current={link.aria}
+          text={link.text}
+        />
+      </li>
+    ))
+  }
+  <li class="md:d-none pt-7">
+    <Link
+      href={`#!`}
+      Class="text-transform-capitalize md:fs-18  fw-500 md:o-90"
+      aria-current={`login`}
+      text={`Login`}
+    />
+  </li>
+  <li class="md:d-none pt-7">
+    <Link
+      href={`#!`}
+      Class="text-transform-capitalize md:fs-18  fw-500 md:o-90"
+      aria-current={`sign up`}
+      text={`sign up`}
+    />
+  </li>
+</ul>

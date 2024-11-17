@@ -1,0 +1,44 @@
+---
+import ErrorImg from "@components/ui/ErrorImg.astro"
+import { posterImg } from "@scripts/configuration";
+interface Props {
+    src:string |any,
+    alt:string |any
+}
+const {src , alt} = Astro.props;
+---
+<>
+{
+    src !== null ?
+    (
+      
+    <img
+    data-src={posterImg("w92",src)}
+    src={posterImg("w500",src)}
+    alt={alt}
+    class="img-cover round-8 img-t  lazyLoad"
+    loading="lazy"
+    decoding="async"
+    // 
+  data-srcset={`
+  ${posterImg("w185", src)} 185w,
+  ${posterImg("w342", src)} 342w,
+  
+  
+`}
+sizes="(max-width: 300px) 185px,(max-width: 780px) 342px"
+   
+   
+  
+  />
+    )
+    :
+    (
+      <ErrorImg/>
+    )
+  }
+<>
+
+
+
+

@@ -1,0 +1,41 @@
+---
+import { AstroFont } from "astro-font";
+---
+<AstroFont
+      config={[
+        {
+         
+          src: [
+            
+            {
+              style: 'normal',
+              weight: '700',
+              path: './public/fonts/Inter18pt-Bold.woff2'
+            },
+            {
+              style: 'normal',
+              weight: '600',
+              path: './public/fonts/Inter18pt-SemiBold.woff2'
+            },
+            {
+              style: 'normal',
+              weight: '500',
+              path: './public/fonts/Inter18pt-Medium.woff2'
+            },
+            {
+              style: 'normal',
+              weight: '400',
+              path: './public/fonts/Inter18pt-Regular.woff2'
+            },
+            
+          ],
+          // googleFontsURL:'https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap',
+          name: "Inter",
+          preload: true,
+          display: "swap",
+          selector: "body",
+          fallback: "sans-serif",
+        },
+      ]}
+    />
+    

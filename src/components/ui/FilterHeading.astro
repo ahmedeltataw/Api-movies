@@ -1,0 +1,35 @@
+---
+interface Props {
+  title: {
+    name: string;
+    Class?: string;
+    spanClass?: string;
+    subName: string;
+  };
+  id: string;
+  name: string;
+  Class: string;
+  label?: {
+    name?: string;
+    Class?: string;
+  };
+  selectClass?: string;
+}
+const { title, id, name, Class, label,selectClass } = Astro.props;
+---
+
+<!-- Filter Section -->
+<div class:list={[`filterHeading`, Class && Class]}>
+  <h2 class:list={[title && title.Class]}>
+    {title && title.subName}
+    <span class:list={[title && title.spanClass]}> {title && title.name}</span>
+  </h2>
+  <div class="filter-section sm-max:grow-1">
+    <label for={id} class:list={[label && label.Class]}
+      >{label && label.name}</label
+    >
+    <select id={id} name={name} onchange="location = this.value" class:list={[selectClass && selectClass]}>
+      <slot />
+    </select>
+  </div>
+</div>

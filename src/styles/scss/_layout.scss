@@ -1,0 +1,10 @@
+@use "./helpers/color" as *;
+// page 
+@use "./pages/home";
+@use "./pages/search";
+body{
+    background-color: var(--BG);
+    &:not(:has(section.hero)){
+        padding-top: 72px;
+    }
+}

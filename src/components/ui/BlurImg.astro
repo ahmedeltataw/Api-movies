@@ -1,0 +1,9 @@
+---
+interface Props {
+    src?: string |any;
+    alt: string |any;
+}
+const {src , alt} = Astro.props;
+import Img from "@assets/images/error/no-poster.png"
+---
+<img src={Img.src} alt={alt} class="imgBlur absolute inset-0 w-full h-full round-8 img-cover img-t ">

@@ -1,0 +1,25 @@
+---
+interface Props {
+    title:string |any,
+    id:string | any,
+    src:string | any,
+    type:string |any,
+    height?:boolean|any
+}
+const { title , id, src, type ,height=false} = Astro.props;
+import PeopleImg from './peopleImg.astro';
+---
+<div class={`peopleCard w-full mb-5 card  relative ${height === true ? 'h-full' : 'h-fit'} ${!type  && 'pb-9'} ${!type  && height  ? "noData" :""}`} data-id={id}>
+    <div class={`peopleImg   round-8 ${height === true ? 'noPeople' : 'h-3/4'}`} >
+        <PeopleImg src={src} alt={title} />
+    </div>
+    
+    <h3 class="line-relaxed fs-20 line-clamp-1 pt-2 ps-4">{title}</h3>
+    {
+        type && (
+
+            <p class="year o-80 fs-16 ps-6 fw-500 pt-0">{type}</p>
+        )
+    }
+    <a href={`people/${id}`} class="w-full h-full absolute inset-0"></a>
+</div>

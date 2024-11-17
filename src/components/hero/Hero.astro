@@ -1,0 +1,20 @@
+---
+import HeroBg from "./HeroBg.astro";
+import HeroBox from "./HeroBox.astro";
+import HeroSearch from "./heroSearch.astro";
+import { Icon } from "astro-icon/components";
+---
+
+<section class="hero h-screen  w-full relative">
+    <HeroBg server:defer>
+        <div slot="fallback" class="w-full relative h-full imgloader">
+            <Icon name={`loader`} size={`48`} class={`w-50  mx-auto o-40`}  />
+        </div>
+    </HeroBg>
+    <div class="container">
+        <div class="heroDetails absolute top-50 left-50 w-full ">
+            <HeroBox/>
+            <HeroSearch/>
+        </div>
+    </div>
+</section>

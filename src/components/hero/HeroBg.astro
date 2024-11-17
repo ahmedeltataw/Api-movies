@@ -1,0 +1,31 @@
+---
+import { backdrop } from "@scripts/configuration";
+import { fetchApi } from "@scripts/api";
+let AllData = await fetchApi("movie/upcoming");
+let imgData = AllData.results;
+
+let getRedomIndex = Math.floor(Math.random() * (imgData.length - 1));
+let rendomImg = imgData[getRedomIndex];
+---
+
+<div class="backDropImg relative h-full">
+  <img
+    data-src={backdrop("w300", rendomImg.backdrop_path)}
+    src={backdrop("w1280", rendomImg.backdrop_path)}
+    data-srcset={`
+        ${backdrop("w300", rendomImg.backdrop_path)} 300w,
+        ${backdrop("w780", rendomImg.backdrop_path)} 780w,
+        ${backdrop("original", rendomImg.backdrop_path)} 2048w,
+        
+        
+      `}
+    sizes="(max-width: 300px) 300px,
+              (max-width: 780px) 780px ,2048w ,
+             "
+    alt=`${rendomImg.original_title}`
+    loading="eager"
+    decoding="async"
+    class="img-cover o-40 lazyLoad heroBG"
+    
+  />
+</div>

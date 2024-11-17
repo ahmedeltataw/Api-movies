@@ -1,0 +1,11 @@
+---
+interface Props {
+  cardName?:string;
+}
+const {cardName='AE_card' } = Astro.props;
+---
+<div class=`${cardName} relative w-full  skeletonCard` >
+    <div class="cardImg h-3/4 round-8 relative skeleton  overflow-hidden"></div>
+    <div class="mt-4 pt-2 ps-4 w-6/10 skeleton round-4 relative overflow-hidden h-12"></div>
+    <div class="year o-80 fs-16 ps-6 fw-500 pt-0 w-3/10 skeleton round-4 relative overflow-hidden h-8 mt-4"></div>
+  </div>

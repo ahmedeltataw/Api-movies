@@ -1,0 +1,40 @@
+---
+import peopleImg from "@assets/images/error/avatar.png";
+import { profileImg } from "@scripts/configuration";
+interface Props {
+  src: string | any;
+  alt: string | any;
+}
+const { src, alt } = Astro.props;
+---
+
+<>
+  {
+    src !== null ? (
+      <img
+        data-src={profileImg("w185", src)}
+        src={profileImg("w45", src)}
+        alt={alt}
+        class="img-cover round-8 img-t  lazyLoad"
+        loading="lazy"
+        decoding="async"
+        data-srcset={`
+      ${profileImg("w45", src)} 45w,
+      ${profileImg("w185", src)} 185w,
+      ${profileImg("h632", src)} 632w,
+    `}
+        sizes="(max-width: 300px) 45px,(max-width: 780px) 185px,(max-width: 1280px) 632px,632px"
+      />
+    ) : (
+      <img
+        src={peopleImg.src}
+        alt="no img"
+        decoding="async"
+        loading="lazy"
+        class="img-cover round-8 img-t notFoundImg"
+        onload="this.classList.add('loaded')"
+      />
+    )
+  }
+  <>
+

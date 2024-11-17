@@ -1,0 +1,26 @@
+---
+interface Props {
+  title: string;
+  des: string;
+}
+const {title , des} = Astro.props;
+import BaseHead from '@components/layout/BaseHead.astro';
+import Header from '@components/header/Header.astro';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={`AE Tv  | ${title}`} description={des} />
+	</head>
+	<body data-theme="dark">
+		<Header/>
+		<main>
+			<slot />
+		</main>
+		<script src="../scripts/global.ts"></script>
+		<script src="../scripts/swiper.ts"></script>
+		<!-- <script src="../scripts/lazyImg.ts"></script> -->
+	</body>
+</html>
+

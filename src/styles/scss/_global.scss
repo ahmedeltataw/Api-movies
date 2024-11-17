@@ -1,0 +1,107 @@
+@use "./helpers/color" as *;
+@use "./helpers/extend" as *;
+@use "./components/header";
+@use "./components/card";
+@use "./components/mainHeading";
+
+// page
+a,
+button,
+svg {
+  color: var(--text);
+  transition: $t-s;
+}
+
+// default
+button {
+  background-color: var(--hover-1);
+  padding: .5em 1em;
+  overflow: hidden;
+
+  &.border {
+    background-color: transparent;
+    border: 1px solid var(--hover-1);
+
+    &:after {
+      border-radius: 3px;
+    }
+  }
+}
+
+//btn Effects 
+.btn-up {
+  position: relative;
+  background-color: var(--hover-1);
+  z-index: 1;
+  border-radius: 4px;
+
+  &::after {
+    @extend %A_B;
+    background-color: var(--hover-2);
+    left: 0;
+    bottom: 0;
+    height: 0;
+    width: 100%;
+    z-index: -1;
+    border-radius: 4px;
+  }
+
+  &:hover {
+    &::after {
+      top: 0;
+      height: 100%;
+    }
+  }
+
+}
+
+
+
+section:has(h1, h2, h3, h4, h5, h6) {
+  color: var(--text);
+}
+
+
+img {
+  &.lazyLoad {
+
+    transition: 0.3s ease-in-out;
+
+    opacity: 0;
+
+
+
+  }
+
+  &.loading {
+    opacity: .4;
+    filter: blur(4px);
+  }
+
+  &.loaded {
+    opacity: 1;
+    filter: none;
+  }
+
+
+  &.error {
+    opacity: .1;
+    border: 1px solid red;
+  }
+}
+
+select,
+input {
+  transition: $t-s;
+  border-color: transparent;
+  &:hover {
+    border-color: var(--hover-2);
+  }
+
+  &:focus {
+    border-color: var(--hover-3);
+    outline: 0;
+    box-shadow: 0 0 1.25rem var(--light-shadow);
+
+  }
+}

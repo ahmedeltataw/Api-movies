@@ -1,0 +1,71 @@
+---
+interface Props {
+  data:[];
+  id:string;
+  loader:boolean
+  ClassName?:string
+}
+const {data ,id ,loader=false , ClassName} = Astro.props;
+import Card from "@components/Cards/Card.astro";
+import { votePercentage, getColor ,splitDate } from "@scripts/configuration";
+import Button from "@components/ui/Button.astro";
+import CardSlekton from "./CardSlekton.astro";
+---
+<div class=`mySlider relative h-full w-full overflow-hidden py-5 triendSlider ${ClassName ? ClassName :''}` id={id}>
+    <div class="slider-wrapper d-flex align-items-center gap-5">
+      {
+        loader ? 
+        (
+        <div class="slider-items">
+            <CardSlekton/>
+          </div>
+        <div class="slider-items">
+            <CardSlekton/>
+          </div>
+        <div class="slider-items">
+            <CardSlekton/>
+          </div>
+        <div class="slider-items">
+            <CardSlekton/>
+          </div>
+        <div class="slider-items">
+            <CardSlekton/>
+          </div>
+        )
+        
+        :
+        (data.map((item: any) => (
+          <div class="slider-items">
+            <Card
+              server:defer
+              title={item.original_title || item.original_name}
+              src={item.poster_path}
+              alt={item.original_title || item.original_name}
+              year={ item.release_date  ? `(${splitDate(item.release_date)  })` :  item.first_air_date ? `(${splitDate(item.first_air_date)})` : ""}
+              id={item.id}
+              rate={votePercentage(item.vote_average)}
+              color={getColor(item.vote_average)}
+              href={`/movies/${item.id}`}>
+              <div slot="fallback">
+                <CardSlekton/>
+              </div>
+            </Card>
+          </div>
+        )))
+      }
+    </div>
+    <div class="slider-control absolute translate-y--50 w-full">
+      <Button
+        type="button"
+        aria={`slider-prev-btn `}
+        ClassName="btn-prev p-0 absolute w-30 h-36 inset-in-s--4 round-l-2  round-r-9"
+        icon={{ name: "arrow-left", side: "left", Class: "w-24 mx-auto" }}
+      />
+      <Button
+        type="button"
+        aria={`slider-next-btn `}
+        ClassName="btn-next p-0 absolute w-30 h-34 inset-in-e-0 round-l-9  round-r-2 "
+        icon={{ name: "arrow-right", side: "left", Class: "w-24 mx-auto" }}
+      />
+    </div>
+  </div>

@@ -1,0 +1,17 @@
+---
+import Button from "@components/ui/Button.astro";
+---
+<div class="rightSide d-flex align-items-center gap-3">
+    <!-- menu btn -->
+    <Button ClassName="btn-up md:d-none icon-nav-base " type="button" aria={'menu mobile'}   ariaEx={'false'} controll={`navMenu`} id="menuBtn"  >
+        <span></span>
+        <span></span>
+        <span></span>
+    </Button>
+    <!-- login button -->
+    <Button ClassName="btn-up md-max:d-none" type="button" aria={'login'}   >
+        <a href="#!" class=" fw-500 ">Login</a>
+    </Button>
+    <!-- search btn -->
+    <Button ClassName="btn-up " type="button" aria={'search btn'} isBorder  icon={{name:'search' , Class:"" ,side:"left"}} />
+</div>

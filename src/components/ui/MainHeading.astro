@@ -1,0 +1,28 @@
+---
+interface Props {
+    title:string;
+    spanData:spanType[];
+    ContainerWidth?:string;
+}
+const {title , spanData , ContainerWidth="w-110"} =Astro.props;
+import type {spanType} from "../../types/type"
+---
+
+<div class="mainHeading d-flex align-items-center justify-between mb-5">
+  <h2 class="fs-28 fw-600">{title}</h2>
+  <div class=`tapContainer h-26 round-full ${ContainerWidth}`>
+    <div
+      class="tabValues d-flex align-items-center justify-around w-full h-full relative"
+    >
+      {
+        spanData.map((item:spanType , index:number )=>(
+          <span class={`tap d-inline-block fs-18 fw-500 ${index === 0 ? 'active' :''}`}>{item.name}</span>
+        ))
+      }
+      <span
+        class="activeColor absolute top-50 translate-y--50 round-full h-8/10 w-1/2 round-full"
+      ></span>
+    </div>
+  </div>
+</div>
+

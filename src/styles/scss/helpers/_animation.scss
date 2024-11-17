@@ -1,0 +1,43 @@
+@mixin nav-sticky ($name) {
+    @keyframes #{$name} {
+        0% {
+            opacity: 0;
+            top: -100px;
+        }
+
+        100% {
+            opacity: 1;
+            top: 0;
+        }
+    }
+}
+
+// shaking
+@mixin shaking ($name) {
+    @keyframes #{$name} {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        40% {
+            transform: rotate(15deg);
+        }
+
+        80% {
+            transform: rotate(-15deg);
+        }
+
+        100% {
+            transform: rotate(0deg);
+        }
+    }
+}
+// Pulse 
+@mixin Pulse ($name) {
+    @keyframes #{$name} {
+        100% {
+            transform: scale(1.5);
+            opacity: 0;
+        }
+    }
+}

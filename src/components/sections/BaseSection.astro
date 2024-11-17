@@ -1,0 +1,39 @@
+---
+import { fetchApi } from "@scripts/api";
+import MySlider from "@components/ui/MySlider.astro";
+import MainHeading from "@components/ui/MainHeading.astro";
+import {trendSpanData} from "@data/data";
+
+let loading = true;
+let data = null;
+
+try {
+  data = await fetchApi(`trending/all/day`);
+} catch (error) {
+  loading = false; 
+  console.error("Error fetching data:", error);
+} finally{
+  loading = false; 
+}
+
+
+
+---
+
+<!-- trendSlider -->
+<section class="trendSection" aria-label="">
+  <div class="container relative">
+    <MainHeading spanData={trendSpanData} title="trending" />
+    {
+      loading ? (
+      <MySlider data={data.results} id="trendSlider" loader={true} />
+      ) : (
+        <MySlider data={data.results} id="trendSlider" loader={false} />
+      )
+    }
+    <MySlider data={data.results} id="trendSlider" loader={true} ClassName="d-none loadingSection" />
+    <!-- <MySlider data={data.results} id="trendSlider" /> -->
+  </div>
+</section>
+
+

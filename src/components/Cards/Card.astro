@@ -1,0 +1,49 @@
+---
+import CardImg from "./CardImg.astro";
+interface Props {
+  title: string | any;
+  href: string | any;
+  src: string | any;
+  alt: string | any;
+  year: string | any;
+  rate: string | any;
+  id: string | any;
+  color: string | any;
+  inSlidr?:boolean | any;
+}
+
+const { href, title, src, alt, year, rate, id, color , inSlidr=true } =
+  Astro.props;
+---
+<!-- w-124 xl-max:w-100 sm-max:min-w-60 -->
+<div class={`AE_card relative ${inSlidr === true ? 'h-full w-full' : 'h-fit mb-5 card'} ${!year ? 'pb-9' : '' }`} data-id={id}>
+  <!-- img 70% -->
+  <div class={`cardImg    round-8 relative ${inSlidr === true ? 'h-3/4' : 'imgGrid '}`}>
+    <CardImg   src={src} alt={alt}  />
+    <!-- rate -->
+    <div
+      class="innerPrenct w-28 h-28 round-cricle d-grid place-center absolute bottom--6 right--1"
+    >
+      <div
+        class="prenct w-24 h-24 round-cricle relative d-grid place-center"
+        style=`background:${color}`
+      >
+        <p class="relative fs-18 fw-700 prensetNum">
+          {rate}<sup class="fs-12 fw-500">%</sup>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- title -->
+  <h3 class="line-relaxed fs-20 line-clamp-1 pt-2 ps-4">{title}</h3>
+  {
+    year && (
+
+      <p class="year o-80 fs-16 ps-6 fw-500 pt-0">{ year} </p>
+    )
+  }
+  <a href={href} class="w-full h-full absolute inset-0"></a>
+</div>
+
+
