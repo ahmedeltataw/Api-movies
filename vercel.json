@@ -2,7 +2,7 @@
     "builds": [
       {
         "src": "astro.config.mjs",
-        "use": "astro@latest"
+        "use": "@astro/adapters/astro-vercel"
       }
     ],
     "routes": [
