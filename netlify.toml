@@ -9,7 +9,7 @@
 
 [[redirects]]
   from = "/*"
-  to = "/.netlify/functions/entry"
+  to = "/.netlify/v1/functions/ssr/.netlify/build/entry.mjs"
   status = 200
   force = true
 
