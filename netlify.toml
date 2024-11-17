@@ -14,12 +14,12 @@
   force = true
 
 [functions]
-  directory = "netlify/functions"
+  directory = ".netlify/v1/functions"
   node_bundler = "esbuild"
 
 # Add headers for different asset types
 [[headers]]
-  for = "/styles/*"
+  for = ".netlify/build/styles/index.css"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
