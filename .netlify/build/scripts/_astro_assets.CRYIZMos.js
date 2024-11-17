@@ -1,5 +1,5 @@
-import { A as AstroError, g as NoImageMetadata, F as FailedToFetchRemoteImageDimensions, E as ExpectedImageOptions, h as ExpectedImage, j as ExpectedNotESMImage, r as resolveSrc, k as isRemoteImage, i as isRemotePath, l as isESMImportedImage, m as isLocalService, D as DEFAULT_HASH_PROPS, n as InvalidImageService, o as ImageMissingAlt } from './astro/assets-service_C7ZH7uth.mjs';
-import { c as createComponent, r as renderTemplate, m as maybeRenderHead, a as addAttribute, s as spreadAttributes, d as createAstro } from './astro/server_CzN0ykJ1.mjs';
+import { A as AstroError, g as NoImageMetadata, F as FailedToFetchRemoteImageDimensions, E as ExpectedImageOptions, h as ExpectedImage, j as ExpectedNotESMImage, r as resolveSrc, k as isRemoteImage, i as isRemotePath, l as isESMImportedImage, m as isLocalService, D as DEFAULT_HASH_PROPS, n as InvalidImageService, o as ImageMissingAlt } from './astro/assets-service.C7ZH7uth.js';
+import { c as createAstro, a as createComponent, r as renderTemplate, m as maybeRenderHead, b as addAttribute, s as spreadAttributes } from './astro/server.E_-_BhNn.js';
 import * as mime from 'mrmime';
 import 'clsx';
 
@@ -841,7 +841,7 @@ async function getConfiguredImageService() {
   if (!globalThis?.astroAsset?.imageService) {
     const { default: service } = await import(
       // @ts-expect-error
-      './astro/assets-service_C7ZH7uth.mjs'
+      './astro/assets-service.C7ZH7uth.js'
     ).then(n => n.s).catch((e) => {
       const error = new AstroError(InvalidImageService);
       error.cause = e;
@@ -927,7 +927,7 @@ async function getImage$1(options, imageConfig) {
   };
 }
 
-const $$Astro$1 = createAstro();
+const $$Astro$1 = createAstro("https://tveltatawey.netlify.app");
 const $$Image = createComponent(async ($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro$1, $$props, $$slots);
   Astro2.self = $$Image;
@@ -949,7 +949,7 @@ const $$Image = createComponent(async ($$result, $$props, $$slots) => {
   return renderTemplate`${maybeRenderHead()}<img${addAttribute(image.src, "src")}${spreadAttributes(additionalAttributes)}${spreadAttributes(image.attributes)}>`;
 }, "D:/project/version/2/Astro 2024/ApiProject/node_modules/astro/components/Image.astro", void 0);
 
-const $$Astro = createAstro();
+const $$Astro = createAstro("https://tveltatawey.netlify.app");
 const $$Picture = createComponent(async ($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro, $$props, $$slots);
   Astro2.self = $$Picture;

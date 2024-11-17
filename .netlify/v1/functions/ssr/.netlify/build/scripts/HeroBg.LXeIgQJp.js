@@ -1,8 +1,8 @@
-import { c as createComponent, r as renderTemplate, m as maybeRenderHead, a as addAttribute } from './astro/server_CzN0ykJ1.mjs';
+import { a as createComponent, r as renderTemplate, m as maybeRenderHead, b as addAttribute } from './astro/server.E_-_BhNn.js';
 import 'kleur/colors';
 import 'clsx';
-import { b as backdrop } from './configuration_BLw2yGZC.mjs';
-import { f as fetchApi } from './api_CsPyJm7x.mjs';
+import { b as backdrop } from './configuration.BLw2yGZC.js';
+import { f as fetchApi } from './api.CsPyJm7x.js';
 
 const $$HeroBg = createComponent(async ($$result, $$props, $$slots) => {
   let AllData = await fetchApi("movie/upcoming");

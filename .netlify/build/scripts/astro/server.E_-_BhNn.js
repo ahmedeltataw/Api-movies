@@ -1,5 +1,5 @@
 import 'kleur/colors';
-import { A as AstroError, I as InvalidComponentArgs, a as AstroGlobUsedOutside, b as AstroGlobNoMatch, M as MissingMediaQueryDirective, N as NoMatchingImport, c as NoMatchingRenderer, d as NoClientOnlyHint, e as NoClientEntrypoint } from './assets-service_C7ZH7uth.mjs';
+import { A as AstroError, I as InvalidComponentArgs, a as AstroGlobUsedOutside, b as AstroGlobNoMatch, M as MissingMediaQueryDirective, N as NoMatchingImport, c as NoMatchingRenderer, d as NoClientOnlyHint, e as NoClientEntrypoint } from './assets-service.C7ZH7uth.js';
 import { clsx } from 'clsx';
 import { escape } from 'html-escaper';
 import { decodeBase64, encodeHexUpperCase, encodeBase64 } from '@oslojs/encoding';
@@ -64,7 +64,7 @@ function createAstro(site) {
   return {
     // TODO: this is no longer necessary for `Astro.site`
     // but it somehow allows working around caching issues in content collections for some tests
-    site: void 0,
+    site: new URL(site) ,
     generator: `Astro v${ASTRO_VERSION}`,
     glob: createAstroGlobFn()
   };
@@ -1482,4 +1482,4 @@ function spreadAttributes(values = {}, _name, { class: scopedClassName } = {}) {
   return markHTMLString(output);
 }
 
-export { Fragment as F, addAttribute as a, renderSlot as b, createComponent as c, createAstro as d, renderComponent as e, renderHead as f, decodeKey as g, maybeRenderHead as m, renderTemplate as r, spreadAttributes as s, unescapeHTML as u };
+export { Fragment as F, createComponent as a, addAttribute as b, createAstro as c, renderSlot as d, renderComponent as e, renderHead as f, decodeKey as g, maybeRenderHead as m, renderTemplate as r, spreadAttributes as s, unescapeHTML as u };

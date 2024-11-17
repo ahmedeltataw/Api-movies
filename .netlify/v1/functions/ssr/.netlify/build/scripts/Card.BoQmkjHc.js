@@ -1,9 +1,9 @@
-import { c as createComponent, r as renderTemplate, e as renderComponent, d as createAstro, m as maybeRenderHead, a as addAttribute, F as Fragment } from './astro/server_CzN0ykJ1.mjs';
+import { a as createComponent, r as renderTemplate, e as renderComponent, c as createAstro, m as maybeRenderHead, b as addAttribute, F as Fragment } from './astro/server.E_-_BhNn.js';
 import 'kleur/colors';
-import { $ as $$Image } from './_astro_assets_CeItgaNA.mjs';
-import { a as posterImg } from './configuration_BLw2yGZC.mjs';
+import { $ as $$Image } from './_astro_assets.CRYIZMos.js';
+import { a as posterImg } from './configuration.BLw2yGZC.js';
 
-const noPoster = new Proxy({"src":"/_astro/no-poster.DjFr0uax.png","width":500,"height":750,"format":"png"}, {
+const noPoster = new Proxy({"src":"/assets/images/no-poster.png","width":500,"height":750,"format":"png"}, {
 						get(target, name, receiver) {
 							if (name === 'clone') {
 								return structuredClone(target);
@@ -20,7 +20,7 @@ const $$ErrorImg = createComponent(($$result, $$props, $$slots) => {
   return renderTemplate`${renderComponent($$result, "Image", $$Image, { "src": noPoster, "alt": `no poster found`, "onload": "this.classList.add('loaded')", "format": "webp", "quality": 70, "class": `img-cover round-8 img-t notFoundImg  overflow-hidden` })} <!-- <img src={noPoster.src} alt={\`no poster found\`}   /> -->`;
 }, "D:/project/version/2/Astro 2024/ApiProject/src/components/ui/ErrorImg.astro", void 0);
 
-const $$Astro$1 = createAstro();
+const $$Astro$1 = createAstro("https://tveltatawey.netlify.app");
 const $$CardImg = createComponent(($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro$1, $$props, $$slots);
   Astro2.self = $$CardImg;
@@ -33,7 +33,7 @@ const $$CardImg = createComponent(($$result, $$props, $$slots) => {
 `, "data-srcset")} sizes="(max-width: 300px) 185px,(max-width: 780px) 342px">` : renderTemplate`${renderComponent($$result2, "ErrorImg", $$ErrorImg, {})}`}${renderComponent($$result2, "Fragment", Fragment, {})}` })}`;
 }, "D:/project/version/2/Astro 2024/ApiProject/src/components/Cards/CardImg.astro", void 0);
 
-const $$Astro = createAstro();
+const $$Astro = createAstro("https://tveltatawey.netlify.app");
 const $$Card = createComponent(($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro, $$props, $$slots);
   Astro2.self = $$Card;

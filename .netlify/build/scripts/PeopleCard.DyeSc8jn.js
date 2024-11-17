@@ -1,8 +1,8 @@
-import { c as createComponent, r as renderTemplate, e as renderComponent, d as createAstro, m as maybeRenderHead, a as addAttribute, F as Fragment } from './astro/server_CzN0ykJ1.mjs';
+import { c as createAstro, a as createComponent, r as renderTemplate, e as renderComponent, m as maybeRenderHead, b as addAttribute, F as Fragment } from './astro/server.E_-_BhNn.js';
 import 'kleur/colors';
-import { p as profileImg } from './configuration_BLw2yGZC.mjs';
+import { p as profileImg } from './configuration.BLw2yGZC.js';
 
-const peopleImg = new Proxy({"src":"/_astro/avatar.CTec_ic7.png","width":500,"height":500,"format":"png"}, {
+const peopleImg = new Proxy({"src":"/assets/images/avatar.png","width":500,"height":500,"format":"png"}, {
 						get(target, name, receiver) {
 							if (name === 'clone') {
 								return structuredClone(target);
@@ -15,7 +15,7 @@ const peopleImg = new Proxy({"src":"/_astro/avatar.CTec_ic7.png","width":500,"he
 						}
 					});
 
-const $$Astro$1 = createAstro();
+const $$Astro$1 = createAstro("https://tveltatawey.netlify.app");
 const $$PeopleImg = createComponent(($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro$1, $$props, $$slots);
   Astro2.self = $$PeopleImg;
@@ -27,7 +27,7 @@ const $$PeopleImg = createComponent(($$result, $$props, $$slots) => {
     `, "data-srcset")} sizes="(max-width: 300px) 45px,(max-width: 780px) 185px,(max-width: 1280px) 632px,632px">` : renderTemplate`<img${addAttribute(peopleImg.src, "src")} alt="no img" decoding="async" loading="lazy" class="img-cover round-8 img-t notFoundImg" onload="this.classList.add('loaded')">`}${renderComponent($$result2, "Fragment", Fragment, {})}` })}`;
 }, "D:/project/version/2/Astro 2024/ApiProject/src/components/Cards/peopleImg.astro", void 0);
 
-const $$Astro = createAstro();
+const $$Astro = createAstro("https://tveltatawey.netlify.app");
 const $$PeopleCard = createComponent(($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro, $$props, $$slots);
   Astro2.self = $$PeopleCard;

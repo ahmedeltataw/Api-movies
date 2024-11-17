@@ -1,14 +1,14 @@
-import { c as createComponent, r as renderTemplate, m as maybeRenderHead, a as addAttribute, b as renderSlot, d as createAstro, e as renderComponent } from '../chunks/astro/server_CzN0ykJ1.mjs';
+import { c as createAstro, a as createComponent, r as renderTemplate, m as maybeRenderHead, b as addAttribute, d as renderSlot, e as renderComponent } from '../scripts/astro/server.E_-_BhNn.js';
 import 'kleur/colors';
-import { $ as $$CardSlekton, a as $$Icon, b as $$Layout } from '../chunks/CardSlekton_DopUKQDt.mjs';
-import { f as fetchApi } from '../chunks/api_CsPyJm7x.mjs';
-import { s as splitDate, v as votePercentage, g as getColor } from '../chunks/configuration_BLw2yGZC.mjs';
-import $$Card from '../chunks/Card_BWw-LXOO.mjs';
-import $$PeopleCard from '../chunks/PeopleCard_B25qkHi8.mjs';
+import { $ as $$CardSlekton, a as $$Icon, b as $$Layout } from '../scripts/CardSlekton.ChBKZNjL.js';
+import { f as fetchApi } from '../scripts/api.CsPyJm7x.js';
+import { s as splitDate, v as votePercentage, g as getColor } from '../scripts/configuration.BLw2yGZC.js';
+import $$Card from '../scripts/Card.BoQmkjHc.js';
+import $$PeopleCard from '../scripts/PeopleCard.DyeSc8jn.js';
 import 'clsx';
 export { renderers } from '../renderers.mjs';
 
-const $$Astro$1 = createAstro();
+const $$Astro$1 = createAstro("https://tveltatawey.netlify.app");
 const $$FilterHeading = createComponent(($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro$1, $$props, $$slots);
   Astro2.self = $$FilterHeading;
@@ -16,7 +16,7 @@ const $$FilterHeading = createComponent(($$result, $$props, $$slots) => {
   return renderTemplate`<!-- Filter Section -->${maybeRenderHead()}<div${addAttribute([`filterHeading`, Class && Class], "class:list")}> <h2${addAttribute([title && title.Class], "class:list")}> ${title && title.subName} <span${addAttribute([title && title.spanClass], "class:list")}> ${title && title.name}</span> </h2> <div class="filter-section sm-max:grow-1"> <label${addAttribute(id, "for")}${addAttribute([label && label.Class], "class:list")}>${label && label.name}</label> <select${addAttribute(id, "id")}${addAttribute(name, "name")} onchange="location = this.value"${addAttribute([selectClass && selectClass], "class:list")}> ${renderSlot($$result, $$slots["default"])} </select> </div> </div>`;
 }, "D:/project/version/2/Astro 2024/ApiProject/src/components/ui/FilterHeading.astro", void 0);
 
-const $$Astro = createAstro();
+const $$Astro = createAstro("https://tveltatawey.netlify.app");
 const $$Search = createComponent(async ($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro, $$props, $$slots);
   Astro2.self = $$Search;

@@ -1,12 +1,12 @@
 import { renderers } from './renderers.mjs';
-import { s as serverEntrypointModule } from './chunks/_@astrojs-ssr-adapter_CvSoi7hX.mjs';
-import { manifest } from './manifest_CN71xoEG.mjs';
+import { s as serverEntrypointModule } from './scripts/_@astrojs-ssr-adapter.CvSoi7hX.js';
+import { manifest } from './manifest_P16UR3aC.mjs';
 import { createExports } from '@astrojs/netlify/ssr-function.js';
 
 const serverIslandMap = new Map([
-	['PeopleCard', () => import('./chunks/PeopleCard_B25qkHi8.mjs')],
-	['Card', () => import('./chunks/Card_BWw-LXOO.mjs')],
-	['HeroBg', () => import('./chunks/HeroBg_iAmzrjru.mjs')],
+	['PeopleCard', () => import('./scripts/PeopleCard.DyeSc8jn.js')],
+	['Card', () => import('./scripts/Card.BoQmkjHc.js')],
+	['HeroBg', () => import('./scripts/HeroBg.LXeIgQJp.js')],
 ]);;
 
 const _page0 = () => import('./pages/_image.astro.mjs');
@@ -25,7 +25,7 @@ const _manifest = Object.assign(manifest, {
     middleware: () => import('./_noop-middleware.mjs')
 });
 const _args = {
-    "middlewareSecret": "62fb17af-f98b-468b-89c5-1229c151c025"
+    "middlewareSecret": "c53b9f29-d370-4c7c-b043-d1f318020d5e"
 };
 const _exports = createExports(_manifest, _args);
 const __astrojsSsrVirtualEntry = _exports.default;

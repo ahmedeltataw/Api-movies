@@ -1,18 +1,18 @@
-import { c as createComponent, r as renderTemplate, m as maybeRenderHead, a as addAttribute, e as renderComponent, d as createAstro } from '../chunks/astro/server_CzN0ykJ1.mjs';
+import { a as createComponent, r as renderTemplate, m as maybeRenderHead, c as createAstro, b as addAttribute, e as renderComponent } from '../scripts/astro/server.E_-_BhNn.js';
 import 'kleur/colors';
-import { c as $$Button, a as $$Icon, $ as $$CardSlekton, t as trendSpanData, b as $$Layout } from '../chunks/CardSlekton_DopUKQDt.mjs';
-import $$HeroBg from '../chunks/HeroBg_iAmzrjru.mjs';
+import { c as $$Button, a as $$Icon, $ as $$CardSlekton, t as trendSpanData, b as $$Layout } from '../scripts/CardSlekton.ChBKZNjL.js';
+import $$HeroBg from '../scripts/HeroBg.LXeIgQJp.js';
 import 'clsx';
-import { f as fetchApi } from '../chunks/api_CsPyJm7x.mjs';
-import $$Card from '../chunks/Card_BWw-LXOO.mjs';
-import { s as splitDate, v as votePercentage, g as getColor } from '../chunks/configuration_BLw2yGZC.mjs';
+import { f as fetchApi } from '../scripts/api.CsPyJm7x.js';
+import $$Card from '../scripts/Card.BoQmkjHc.js';
+import { s as splitDate, v as votePercentage, g as getColor } from '../scripts/configuration.BLw2yGZC.js';
 export { renderers } from '../renderers.mjs';
 
 const $$HeroBox = createComponent(($$result, $$props, $$slots) => {
   return renderTemplate`${maybeRenderHead()}<div class="heroBox relative text-center"> <h1 class="md:fs-60 sm:fs-48 fs-36  line-relaxed ">Welcome to <span>AE TV</span></h1> <h2 class="md:fs-28 sm:fs-24 fs-18">Millions of movies, TV shows and people to discover</h2> </div>`;
 }, "D:/project/version/2/Astro 2024/ApiProject/src/components/hero/HeroBox.astro", void 0);
 
-const $$Astro$3 = createAstro();
+const $$Astro$3 = createAstro("https://tveltatawey.netlify.app");
 const $$FormGroup = createComponent(($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro$3, $$props, $$slots);
   Astro2.self = $$FormGroup;
@@ -51,7 +51,7 @@ const $$Hero = createComponent(($$result, $$props, $$slots) => {
   return renderTemplate`${maybeRenderHead()}<section class="hero h-screen  w-full relative"> ${renderComponent($$result, "HeroBg", $$HeroBg, { "server:defer": true, "server:component-directive": "defer", "server:component-path": "D:/project/version/2/Astro 2024/ApiProject/src/components/hero/HeroBg.astro", "server:component-export": "default" }, { "fallback": ($$result2) => renderTemplate`<div class="w-full relative h-full imgloader"> ${renderComponent($$result2, "Icon", $$Icon, { "name": `loader`, "size": `48`, "class": `w-50  mx-auto o-40` })} </div>` })} <div class="container"> <div class="heroDetails absolute top-50 left-50 w-full "> ${renderComponent($$result, "HeroBox", $$HeroBox, {})} ${renderComponent($$result, "HeroSearch", $$HeroSearch, {})} </div> </div> </section>`;
 }, "D:/project/version/2/Astro 2024/ApiProject/src/components/hero/Hero.astro", void 0);
 
-const $$Astro$2 = createAstro();
+const $$Astro$2 = createAstro("https://tveltatawey.netlify.app");
 const $$MySlider = createComponent(($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro$2, $$props, $$slots);
   Astro2.self = $$MySlider;
@@ -63,7 +63,7 @@ const $$MySlider = createComponent(($$result, $$props, $$slots) => {
         <div class="slider-items"> ${renderComponent($$result, "CardSlekton", $$CardSlekton, {})} </div>` : data.map((item) => renderTemplate`<div class="slider-items"> ${renderComponent($$result, "Card", $$Card, { "server:defer": true, "title": item.original_title || item.original_name, "src": item.poster_path, "alt": item.original_title || item.original_name, "year": item.release_date ? `(${splitDate(item.release_date)})` : item.first_air_date ? `(${splitDate(item.first_air_date)})` : "", "id": item.id, "rate": votePercentage(item.vote_average), "color": getColor(item.vote_average), "href": `/movies/${item.id}`, "server:component-directive": "defer", "server:component-path": "@components/Cards/Card.astro", "server:component-export": "default" }, { "fallback": ($$result2) => renderTemplate`<div> ${renderComponent($$result2, "CardSlekton", $$CardSlekton, {})} </div>` })} </div>`)} </div> <div class="slider-control absolute translate-y--50 w-full"> ${renderComponent($$result, "Button", $$Button, { "type": "button", "aria": `slider-prev-btn `, "ClassName": "btn-prev p-0 absolute w-30 h-36 inset-in-s--4 round-l-2  round-r-9", "icon": { name: "arrow-left", side: "left", Class: "w-24 mx-auto" } })} ${renderComponent($$result, "Button", $$Button, { "type": "button", "aria": `slider-next-btn `, "ClassName": "btn-next p-0 absolute w-30 h-34 inset-in-e-0 round-l-9  round-r-2 ", "icon": { name: "arrow-right", side: "left", Class: "w-24 mx-auto" } })} </div> </div>`;
 }, "D:/project/version/2/Astro 2024/ApiProject/src/components/ui/MySlider.astro", void 0);
 
-const $$Astro$1 = createAstro();
+const $$Astro$1 = createAstro("https://tveltatawey.netlify.app");
 const $$MainHeading = createComponent(($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro$1, $$props, $$slots);
   Astro2.self = $$MainHeading;
@@ -85,7 +85,7 @@ const $$BaseSection = createComponent(async ($$result, $$props, $$slots) => {
   return renderTemplate`<!-- trendSlider -->${maybeRenderHead()}<section class="trendSection" aria-label=""> <div class="container relative"> ${renderComponent($$result, "MainHeading", $$MainHeading, { "spanData": trendSpanData, "title": "trending" })} ${loading ? renderTemplate`${renderComponent($$result, "MySlider", $$MySlider, { "data": data.results, "id": "trendSlider", "loader": true })}` : renderTemplate`${renderComponent($$result, "MySlider", $$MySlider, { "data": data.results, "id": "trendSlider", "loader": false })}`} ${renderComponent($$result, "MySlider", $$MySlider, { "data": data.results, "id": "trendSlider", "loader": true, "ClassName": "d-none loadingSection" })} <!-- <MySlider data={data.results} id="trendSlider" /> --> </div> </section>`;
 }, "D:/project/version/2/Astro 2024/ApiProject/src/components/sections/BaseSection.astro", void 0);
 
-const $$Astro = createAstro();
+const $$Astro = createAstro("https://tveltatawey.netlify.app");
 const $$Index = createComponent(($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro, $$props, $$slots);
   Astro2.self = $$Index;
