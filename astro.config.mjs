@@ -2,12 +2,16 @@
 import { defineConfig } from 'astro/config';
 import icon from 'astro-icon';
 import purgecss from 'astro-purgecss';
-import netlify from '@astrojs/netlify';
+
+
+// import node from '@astrojs/node';
+
+import vercel from '@astrojs/vercel/serverless';
 
 export default defineConfig({
   
   
-  site: 'https://tveltatawey.netlify.app',
+  site: 'https://tveltatawey.com',
   base: '/',
   build: {
     assets: 'assets/images',
@@ -15,30 +19,33 @@ export default defineConfig({
   },
 
   vite: {
-
     build: {
       rollupOptions: {
         output: {
-          assetFileNames: (assetInfo) => {
-            // Handle SCSS/CSS
-            if (assetInfo.name?.match(/\.(css|scss)$/)) {
-              return 'styles/[name][extname]';
+          chunkFileNames: 'assets/js/[name]-[hash].js',
+          entryFileNames: 'assets/js/[name]-[hash].js',
+          assetFileNames: ({
+            name
+          }) => {
+            // Check if the file is an image
+            if (/\.(gif|jpe?g|png|svg|webp)$/.test(name ?? '')) {
+              return 'assets/images/[name]-[hash][extname]';
             }
-            // Handle TypeScript/JavaScript
-            if (assetInfo.name?.match(/\.(js|ts)$/)) {
-              return 'scripts/[name][extname]';
+            if (/\.(css|scss)$/.test(name ?? '')) {
+              return 'assets/css/[name]-[hash][extname]';
             }
-            // Handle images
-            if (/\.(gif|jpe?g|png|svg|webp)$/i.test(assetInfo.name ?? '')) {
-              return 'assets/images/[name][extname]';
+            if (/\.(ts|js)$/.test(name ?? '')) {
+              return 'assets/js/[name]-[hash][extname]';
             }
-            return 'assets/[name][extname]';
-          },
-          chunkFileNames: 'scripts/[name].[hash].js',
-          entryFileNames: 'scripts/[name].[hash].js',
+
+            // default value
+            // ref: https://rollupjs.org/guide/en/#outputassetfilenames
+            return 'assets/[name]-[hash][extname]';
+          }
         }
       }
     }
+
   },
 
   image: {
@@ -54,12 +61,8 @@ export default defineConfig({
 
   integrations: [icon(), purgecss()],
   
-  adapter: netlify({
-    imageCDN: false,
-    // assets: true
-  }),
+  adapter: vercel(),
   experimental: {
     serverIslands: true,
     }
 });
-
